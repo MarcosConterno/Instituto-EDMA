@@ -108,165 +108,186 @@ export default function Home() {
   };
 
   // detecta telas "bem largas" (27")
-const [isWide, setIsWide] = useState(false);
+  const [isWide, setIsWide] = useState(false);
 
-useEffect(() => {
-  const onResize = () => setIsWide(window.innerWidth >= 1400); // ajuste o limite se quiser
-  onResize();                           // roda uma vez ao montar
-  window.addEventListener("resize", onResize);
-  return () => window.removeEventListener("resize", onResize);
-}, []);
+  useEffect(() => {
+    const onResize = () => setIsWide(window.innerWidth >= 1400); // ajuste o limite se quiser
+    onResize();                           // roda uma vez ao montar
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
 
   return (
     <>
-   {/* Hero Section */}
-<section
-  className="bg-cover bg-center text-white h-screen flex items-center justify-start font-livvic"
-  style={{ backgroundImage: "url('/img/doctor.jpg')" }}
->
-  <div className="text-left px-16 py-12 max-w-6xl ml-8">
-    <p className="text-xl mb-4 text-white font-normal">Terapia Canabidiol</p>
-    <h1 className="text-6xl font-bold leading-tight mb-6">
-      <span className="text-green-300">A ciência é nossa raiz</span>
-      <br />
-      <span className="text-white">e o cuidado nosso propósito</span>
-    </h1>
-    <p className="text-xl mb-8 text-white leading-relaxed">
-      Cuidamos de você de uma forma única e especial!
-      <br />
-      Entre em contato agora.
-    </p>
-    <button className="px-8 py-4 bg-green-300 text-black text-lg font-medium rounded-full hover:bg-green-400 transition duration-300 shadow-lg">
-      AGENDAR CONSULTA
-    </button>
-  </div>
-</section>
-
-{/* Seção Pilares */}
-<EDMAescada/>
-
-{/* Seção com vídeo de fundo */}
-<section style={{ position: "relative", width: "100%", overflow: "hidden" }}>
-  {!showVideo ? (
-    // Thumbnail/Capa
-    <div
-      style={{
-        position: "relative",
-        width: "100%",
-        // Em telas grandes usamos cover para preencher sem barras; nas demais, contain 16:9
-        height: isWide ? "85vh" : undefined,
-        aspectRatio: isWide ? undefined : "16 / 9",
-        backgroundImage: "url('/img/thumbvideo.png')",
-        backgroundSize: isWide ? "cover" : "contain",
-        backgroundRepeat: "no-repeat",
-        backgroundPosition: "center",
-        backgroundColor: "black",
-        cursor: "pointer",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-      }}
-      onClick={handlePlayClick}
-    >
-      {/* Overlay escuro */}
-      <div
-        style={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          width: "100%",
-          height: "100%",
-          backgroundColor: "rgba(0, 0, 0, 0.3)",
-        }}
-      />
-
-      {/* Botão de Play centralizado */}
-      <div
-        style={{
-          position: "relative",
-          zIndex: 3,
-          width: "80px",
-          height: "80px",
-          backgroundColor: "rgba(255, 255, 255, 0.9)",
-          borderRadius: "50%",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          cursor: "pointer",
-          transition: "all 0.3s ease",
-          marginLeft: "200px", // Deslocamento para a direita (mantido)
-        }}
-        onMouseEnter={(e) => {
-          e.currentTarget.style.backgroundColor = "rgba(255, 255, 255, 1)";
-          e.currentTarget.style.transform = "scale(1.1)";
-        }}
-        onMouseLeave={(e) => {
-          e.currentTarget.style.backgroundColor = "rgba(255, 255, 255, 0.9)";
-          e.currentTarget.style.transform = "scale(1)";
-        }}
+      {/* Hero Section */}
+      <section
+        className="bg-cover bg-center text-white h-screen flex items-center justify-start font-livvic"
+        style={{ backgroundImage: "url('/img/doctor.jpg')" }}
       >
-        <div
-          style={{
-            width: 0,
-            height: 0,
-            borderLeft: "20px solid #333",
-            borderTop: "12px solid transparent",
-            borderBottom: "12px solid transparent",
-            marginLeft: "4px",
-          }}
-        />
-      </div>
-    </div>
-  ) : (
-    // Vídeo real
-    <>
-      <video
-        ref={videoRef}
-        src="/videos/EdmaBrunaComLettering.mp4"
-        onClick={() => {
-          isPlaying ? pauseVideo() : playVideo();
-        }}
-        style={{
-          width: "100%",
-          // Em telas grandes, preenche sem barras; em telas menores, preserva o vídeo inteiro 16:9
-          height: isWide ? "85vh" : "auto",
-          aspectRatio: isWide ? undefined : "16 / 9",
-          objectFit: isWide ? "cover" : "contain",
-          backgroundColor: "black",
-          cursor: "pointer",
-          display: "block",
-        }}
-        muted={isMuted}
-        playsInline
-        preload="metadata"
-      />
+        <div className="text-left px-16 py-12 max-w-6xl ml-8">
+          <p className="text-xl mb-4 text-white font-normal">Terapia Canabidiol</p>
+          <h1 className="text-6xl font-bold leading-tight mb-6">
+            <span className="text-green-300">A ciência é nossa raiz</span>
+            <br />
+            <span className="text-white">e o cuidado nosso propósito</span>
+          </h1>
+          <p className="text-xl mb-8 text-white leading-relaxed">
+            Cuidamos de você de uma forma única e especial!
+            <br />
+            Entre em contato agora.
+          </p>
+          <button className="px-8 py-4 bg-green-300 text-black text-lg font-medium rounded-full hover:bg-green-400 transition duration-300 shadow-lg">
+            AGENDAR CONSULTA
+          </button>
+        </div>
+      </section>
 
-      {/* Botão Mute/Unmute */}
-      {isPlaying && (
-        <button
-          onClick={toggleMute}
-          style={{
-            position: "absolute",
-            bottom: "20px",
-            right: "20px",
-            background: "rgba(0, 0, 0, 0.6)",
-            color: "white",
-            border: "none",
-            borderRadius: "50%",
-            width: "40px",
-            height: "40px",
-            fontSize: "1.5rem",
-            cursor: "pointer",
-            zIndex: 10,
-          }}
-          aria-label={isMuted ? "Desmutar vídeo" : "Mutar vídeo"}
-        >
-          {isMuted ? "🔇" : "🔊"}
-        </button>
-      )}
-    </>
-  )}
-</section>
+      {/* Seção Pilares */}
+      <EDMAescada />
+
+      {/* Seção com vídeo de fundo */}
+      <section style={{ position: "relative", width: "100%", overflow: "hidden" }}>
+        {!showVideo ? (
+          // Thumbnail/Capa
+          <div
+            style={{
+              position: "relative",
+              width: "100%",
+              height: isWide ? "85vh" : undefined,
+              aspectRatio: isWide ? undefined : "16 / 9",
+              backgroundImage: "url('/img/thumbvideo.png')",
+              backgroundSize: isWide ? "cover" : "contain",
+              backgroundRepeat: "no-repeat",
+              backgroundPosition: "center",
+              backgroundColor: "black",
+              cursor: "pointer",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              textAlign: "center",
+              padding: "20px",
+            }}
+            onClick={handlePlayClick}
+          >
+            {/* Overlay escuro */}
+            <div
+              style={{
+                position: "absolute",
+                top: 0,
+                left: 0,
+                width: "100%",
+                height: "100%",
+                backgroundColor: "rgba(0, 0, 0, 0.4)",
+              }}
+            />
+
+            {/* Conteúdo centralizado */}
+            <div
+              style={{
+                position: "relative",
+                zIndex: 2,
+                color: "white",
+                maxWidth: "700px",
+              }}
+            >
+              <p style={{ fontSize: "18px", marginBottom: "8px" }}>Assista agora</p>
+
+              <h1
+                style={{
+                  fontSize: isWide ? "48px" : "28px",
+                  fontWeight: "bold",
+                  marginBottom: "16px",
+                  lineHeight: "1.2",
+                }}
+              >
+                <span style={{ color: "#4ade80" }}>Vídeo Institucional</span>
+                <br />
+                <span>Nossa missão e propósito</span>
+              </h1>
+
+              <p
+                style={{
+                  fontSize: "16px",
+                  marginBottom: "32px",
+                  lineHeight: "1.5",
+                }}
+              >
+                Conheça um pouco mais sobre nosso trabalho e valores.
+              </p>
+
+              {/* Botão de Play centralizado com glow */}
+              <div className="flex justify-center items-center w-full">
+                <div className="relative flex items-center justify-center w-28 h-28 rounded-full bg-gradient-to-br from-green-400 to-blue-600 p-[3px] group cursor-pointer">
+                  {/* Camada interna */}
+                  <div className="flex items-center justify-center w-24 h-24 rounded-full bg-white group-hover:bg-transparent transition-all duration-300">
+                    {/* Ícone Play */}
+                    <div
+                      className="ml-1"
+                      style={{
+                        width: 0,
+                        height: 0,
+                        borderLeft: "20px solid #333",
+                        borderTop: "12px solid transparent",
+                        borderBottom: "12px solid transparent",
+                      }}
+                    />
+                  </div>
+
+                  {/* Glow externo */}
+                  <span className="absolute inset-0 rounded-full bg-gradient-to-br from-green-400 to-blue-600 opacity-20 blur-xl scale-125 transition-all duration-500 ease-in-out group-hover:opacity-70 group-hover:scale-150"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        ) : (
+          // Vídeo real
+          <>
+            <video
+              ref={videoRef}
+              src="/videos/EdmaBrunaComLettering.mp4"
+              onClick={() => {
+                isPlaying ? pauseVideo() : playVideo();
+              }}
+              style={{
+                width: "100%",
+                height: isWide ? "85vh" : "auto",
+                aspectRatio: isWide ? undefined : "16 / 9",
+                objectFit: isWide ? "cover" : "contain",
+                backgroundColor: "black",
+                cursor: "pointer",
+                display: "block",
+              }}
+              muted={isMuted}
+              playsInline
+              preload="metadata"
+            />
+
+            {/* Botão Mute/Unmute */}
+            {isPlaying && (
+              <button
+                onClick={toggleMute}
+                style={{
+                  position: "absolute",
+                  bottom: "20px",
+                  right: "20px",
+                  background: "rgba(0, 0, 0, 0.6)",
+                  color: "white",
+                  border: "none",
+                  borderRadius: "50%",
+                  width: "40px",
+                  height: "40px",
+                  fontSize: "1.5rem",
+                  cursor: "pointer",
+                  zIndex: 10,
+                }}
+                aria-label={isMuted ? "Desmutar vídeo" : "Mutar vídeo"}
+              >
+                {isMuted ? "🔇" : "🔊"}
+              </button>
+            )}
+          </>
+        )}
+      </section>
     </>
   );
 }
