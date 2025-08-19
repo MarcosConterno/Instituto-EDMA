@@ -127,7 +127,7 @@ export default function Home() {
         <div className="text-left px-16 py-12 max-w-6xl ml-8">
           <p className="text-xl mb-4 text-white font-normal">Terapia Canabidiol</p>
           <h1 className="text-6xl font-bold leading-tight mb-6">
-            <span className="text-green-300">A ciência é nossa raiz</span>
+            <span className="text-[#C08414]">A ciência é nossa raiz</span>
             <br />
             <span className="text-white">e o cuidado nosso propósito</span>
           </h1>
