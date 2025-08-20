@@ -122,7 +122,7 @@ export default function Home() {
       {/* Hero Section */}
       <section
         className="bg-cover bg-center text-white h-screen flex items-center justify-start font-livvic"
-        style={{ backgroundImage: "url('/img/doctor.jpg')" }}
+        style={{ backgroundImage: "url('/img/fundo_home.png')" }}
       >
         <div className="text-left px-16 py-12 max-w-6xl ml-8">
           <p className="text-xl mb-4 text-white font-normal">Terapia Canabidiol</p>

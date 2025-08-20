@@ -15,7 +15,7 @@ export default function Tratamento() {
       {/* Background */}
       <div className="absolute inset-0 z-0">
         <img
-          src="https://api.builder.io/api/v1/image/assets/TEMP/79cd0420503e9d433675341aeab56f05931efaea?width=4710"
+          src="/img/tratamento.png"
           alt="Cannabis background"
           className="w-full h-full object-cover opacity-50"
         />
