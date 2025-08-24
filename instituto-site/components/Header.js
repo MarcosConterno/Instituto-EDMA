@@ -42,7 +42,7 @@ export default function Header() {
           <Link href="/">
             <div className="flex items-center justify-center rounded cursor-pointer">
               <img
-                src="/img/novas/LogoHorizontalCor3.svg"
+                src="/img/novas/LogoHorizontalCor4.svg"
                 alt="EDMA Instituto - Educação Ortodontia Medicina Avançada"
                 className="h-16 w-auto"
               />
