@@ -98,7 +98,7 @@ const EDMAescada = () => {
         {/* Texto à direita */}
         <div className="md:w-1/2 max-w-xl text-left text-white">
           <p className="text-[11px] sm:text-xs uppercase text-gray-300 tracking-[0.2em] mb-2">
-            PILARES
+            NOSSOS PILARES
           </p>
 
           <h2 className="font-bold mb-3 text-2xl sm:text-3xl md:text-4xl">
@@ -109,12 +109,12 @@ const EDMAescada = () => {
             Três pilares nos guiam nessa jornada
           </h3>
 
-          <p className="text-gray-300 mb-6 text-sm sm:text-base leading-relaxed">
-            Com excelência em pesquisa, educação e inovação, nosso laboratório é
-            referência em óleo de canabidiol. Investimos em estudos científicos
-            para ampliar suas aplicações terapêuticas. Desenvolvemos produtos de
-            alta qualidade com tecnologia de ponta, sempre focados em saúde e
-            bem-estar.
+          <p className="text-gray-20 mb-6 text-sm sm:text-base leading-relaxed">
+            No Instituto EDMA, nossos pilares sustentam tudo o que fazemos. 
+            Educação para formar e informar, levando conhecimento que transforma. 
+            Descoberta para pesquisar e inovar, abrindo novos caminhos de esperança. 
+            Medicina Avançada para oferecer um cuidado humano, seguro e personalizado, 
+            unindo ciência e acolhimento em cada etapa da jornada.
           </p>
 
           {/* Lista vertical com letras atrás do início das palavras */}
@@ -532,10 +532,9 @@ const GruposCuidado = () => {
     <section
       className="py-16 px-4 sm:px-6 lg:px-8 relative"
       style={{
-        backgroundColor: "#111A17", // cor base (fallback)
+        backgroundColor: "#111A17", 
         backgroundImage:
           "linear-gradient(rgba(29, 85, 63, 0.45), rgba(0, 0, 0, 0.35)), url('/img/textura.png')",
-        // 🔁 sua imagem aqui
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
@@ -559,28 +558,27 @@ const GruposCuidado = () => {
         </div>
 
         {/* Grid responsivo de ícones + rótulos */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-8 sm:gap-10 place-items-center">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8 sm:gap-10 place-items-center">
           {grupos.map((grupo, index) => (
             <figure
               key={index}
-              className="
+              className={`
                 group relative flex flex-col items-center text-center
                 rounded-2xl p-4
                 transition-all duration-300
                 hover:-translate-y-1
                 hover:shadow-[0_12px_30px_-6px_rgba(16,185,129,.45)]
-              "
+                ${index === grupos.length - 1 ? 'col-span-full sm:col-span-2 lg:col-span-1' : ''}
+              `}
             >
               <div className="w-28 h-28 sm:w-32 sm:h-32 lg:w-44 lg:h-44 flex items-center justify-center">
                 <img
                   src={grupo.icone}
                   alt={`${grupo.titulo} ${grupo.subtitulo}`}
-                  className="
-                    max-w-full max-h-full object-contain
+                  className="max-w-full max-h-full object-contain
                     transition-transform duration-300
                     group-hover:scale-110
-                    filter-none drop-shadow-none
-                  "
+                    filter-none drop-shadow-none"
                   loading="lazy"
                 />
               </div>
@@ -596,6 +594,7 @@ const GruposCuidado = () => {
     </section>
   );
 };
+
 
 /* =========================
    ESPECIALISTAS — carrossel mantendo o mesmo layout

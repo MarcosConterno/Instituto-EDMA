@@ -68,7 +68,7 @@ export default function Header() {
 
           <Link href="/associese" aria-current={isAssociese ? "page" : undefined}>
             <button
-              className={`w-full px-6 py-3 mt-0 rounded-full text-lg md:text-xl font-semibold font-livvic transition-colors duration-300 border-2
+              className={`w-full px-6 py-3 mt-0 rounded-full text-lg md:text-xl font-semibold font-livvic transition-colors duration-300 border-2 animate-pulse
                 ${
                   isAssociese
                     ? "bg-white text-[#324530] border-white"
