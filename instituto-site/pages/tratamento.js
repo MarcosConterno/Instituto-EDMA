@@ -2,7 +2,7 @@ const StepsSection = () => {
   const steps = [
     {
       title: "Consulta com especialista",
-      text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+      text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
       image: "/img/tratamento/atendimento.jpg",  // Caminho da imagem para este step
     },
     {
@@ -29,53 +29,73 @@ const StepsSection = () => {
 
   return (
     <section
-      className="py-10 px-5 sm:px-5 md:px-16 min-h-screen mx-auto font-livvic text-white relative"
+      className="py-16 px-4 sm:px-6 lg:px-8 relative"
       style={{
-        backgroundImage: 'url("/img/especialistas/cannabis-marijuana-leaf-closeup 1.png")',
+        backgroundColor: "#111A17", 
+        backgroundImage:
+          "linear-gradient(rgba(29, 85, 63, 0.45), rgba(0, 0, 0, 0.35)), url('/img/textura.png')",
         backgroundSize: "cover",
         backgroundPosition: "center",
-        backgroundColor: "#111a17",
-        height: "auto",
-        width: "100%",
+        backgroundRepeat: "no-repeat",
       }}
     >
       <div className="absolute inset-0 bg-gradient-to-b from-[#254337] to-[#254337] opacity-10"></div>
 
-      <h2 className="text-3xl font-bold mb-12 text-center relative z-10 mt-24">
-        Como iniciar um tratamento de cannabis pelo instituto EDMA
-      </h2>
+      <div className="max-w-7xl mx-auto ">
+        {/* Título e subtítulo */}
+        <div className="text-center mb-12">
+          <p className="text-4xl lg:text-5xl text-white/70 font-bold mb-4">
+            COMO INICIAR UM TRATAMENTO
+          </p>
+          <h2
+            className="text-2xl uppercase  tracking-widest  mb-6"
+            style={{ color: "#b2c5b0ff" }}
+          >
+            Tratamos saúde com foco em você
+          </h2>
+        </div>
 
-      <div
-        className="flex flex-wrap justify-center items-center gap-12 relative z-10 mt-32 
-        grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5"
-      >
-        {steps.map((step, index) => (
+<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 sm:gap-10 place-items-center">
+  {steps.map((step, index) => (
 <div
   key={index}
   className={`relative flex flex-col items-center text-center p-6 md:p-8 rounded-xl 
-  rotate-0 hover:-rotate-12 duration-500 hover:-translate-y-12 h-full w-full object-cover 
-  hover:scale-150 transform origin-bottom
-  hover:scale-110 hover:-translate-y-3 hover:shadow-[0_12px_30px_-6px_rgba(16,185,129,.45)]
-  w-full h-full md:w-72 mb-6 md:mb-0 transform transition duration-300 ease-in-out
-  ${index === 4 ? "flex justify-center" : ""}`} // Alinha o último item no centro
-  style={{
-    backgroundImage: `url(${step.image})`,  // A imagem agora é única para cada step
-    backgroundSize: "cover",
-    backgroundPosition: "center",
-    backgroundColor: "rgba(37, 67, 55, 0.6)", // Transparência aplicada apenas no fundo do step
-  }}
+  w-full h-full max-w-xs md:max-w-md lg:max-w-lg mb-6 md:mb-0 transform transition duration-300 ease-in-out
+  ${index === 4 ? "flex justify-center" : ""} 
+  group hover:z-50 hover:scale-110 hover:translate-y-3`} // Adicionando efeitos de transformação e z-index
 >
-  {/* Texto que aparece no hover */}
-  <p className="text-black opacity-0 hover:opacity-100 transition-opacity duration-300 ease-in-out">
-    {step.text}
-  </p>
+  {/* Fundo da imagem com efeito de blur ativado no hover */}
+  <div
+    className="absolute inset-0 bg-cover bg-center z-0 rounded-xl filter transition-all duration-300 ease-in-out group-hover:blur-sm"
+    style={{
+      backgroundImage: `url(${step.image})`,  // A imagem agora é única para cada step
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+      backgroundColor: "rgba(37, 67, 55, 0.6)", // Transparência aplicada apenas no fundo do step
+    }}
+  />
 
-  {/* Título agora posicionado abaixo */}
-  <h3 className="text-xl font-semibold mt-4">{step.title}</h3>
+  {/* Conteúdo (Texto e título) */}
+  <div className="flex flex-col justify-between h-full w-full z-10 opacity-100 group-hover:opacity-100 transition-opacity duration-300 ease-in-out">
+    {/* Texto que aparece no hover */}
+    <p className="text-black opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out">
+      {step.text}
+    </p>
+
+    {/* Título posicionado na parte inferior do componente, oculto no hover */}
+    <h3 className="text-xl font-semibold mt-auto text-[#111A17] group-hover:opacity-0 transition-opacity duration-300 ease-in-out">
+      {step.title}
+    </h3>
+  </div>
 </div>
 
 
-        ))}
+
+
+
+
+  ))}
+</div>
       </div>
     </section>
   );
