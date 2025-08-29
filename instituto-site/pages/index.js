@@ -741,14 +741,14 @@ const Especialistas = () => {
               <button
                 onClick={prev}
                 aria-label="Anterior"
-                className="absolute top-1/2 -translate-y-1/2 left-2 rounded-full bg-white/10 hover:bg-white/20 text-white w-9 h-9 flex items-center justify-center backdrop-blur-md"
+                className="absolute top-1/3 -translate-y-1/2 left-0 rounded-full bg-white/10 hover:bg-white/20 text-white w-9 h-9 flex items-center justify-center backdrop-blur-md"
               >
                 ‹
               </button>
               <button
                 onClick={next}
                 aria-label="Próximo"
-                className="absolute top-1/2 -translate-y-1/2 right-2 rounded-full bg-white/10 hover:bg-white/20 text-white w-9 h-9 flex items-center justify-center backdrop-blur-md"
+                className="absolute top-1/3 -translate-y-1/2 right-0 rounded-full bg-white/10 hover:bg-white/20 text-white w-10 h-10 flex items-center justify-center backdrop-blur-md"
               >
                 ›
               </button>
