@@ -33,7 +33,8 @@ const TypingEffect = ({ text, typingSpeed = 150, pause = 5000 }) => {
 
 const QuemSomos = () => {
   return (
-    <section className="relative overflow-hidden text-white flex items-center justify-start font-livvic min-h-[90vh] md:min-h-[80svh]">
+    <section className="relative overflow-hidden text-white flex justify-start font-livvic min-h-[90vh] 
+                        items-start md:items-center">
       <img
         src="/img/quemsomos.jpg"
         alt=""
@@ -48,8 +49,8 @@ const QuemSomos = () => {
       />
 
       <div className="relative text-right px-6 sm:px-12 md:px-16 py-10 max-w-full md:max-w-5xl z-10">
-        <div className="inline-block overflow-hidden ">
-        <TypingEffect text="QUEM SOMOS" speed={2500} pause={5000} />
+        <div className="inline-block overflow-hidden">
+          <TypingEffect text="QUEM SOMOS" speed={2500} pause={5000} />
         </div>
       </div>
     </section>
